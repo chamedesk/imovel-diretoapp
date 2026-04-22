@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card form-card">
+  <h1>Novo anúncio</h1>
+  <form id="listing-form" class="stack">
+    <label>Fonte<input name="source" value="manual"></label>
+    <label>ID externo<input name="external_id"></label>
+    <label>Título<input name="title" required></label>
+    <label>Descrição<textarea name="description" rows="6"></textarea></label>
+    <label>Preço<input type="number" step="0.01" name="price"></label>
+    <label>Bairro<input name="neighborhood"></label>
+    <label>Cidade<input name="city"></label>
+    <label>Tipo do imóvel<input name="property_type"></label>
+    <label>Nome do contato<input name="contact_name"></label>
+    <label>Telefone<input name="contact_phone"></label>
+    <label>Dica de papel do contato<input name="contact_role_hint" placeholder="owner ou broker"></label>
+    <label>URL<input name="url"></label>
+    <button type="submit">Analisar anúncio</button>
+  </form>
+  <pre id="result-box" class="result-box"></pre>
+</div>
+<script src="/static/js/listing-form.js"></script>
+{% endblock %}

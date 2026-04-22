@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or 'Imóvel Direto Monitor' }}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <a href="/" class="brand">🏠 Imóvel Direto Monitor</a>
+      </div>
+      <nav class="nav">
+        <a href="/">Dashboard</a>
+        <a href="/filters/new">Novo filtro</a>
+        <a href="/listings/new">Novo anúncio</a>
+        <a href="/docs">API</a>
+        <a href="/logout">Sair</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

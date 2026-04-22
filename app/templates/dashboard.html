@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <div>
+    <h1>Painel</h1>
+    <p>Cadastre filtros, receba anúncios e classifique oportunidades de proprietário direto.</p>
+  </div>
+  <div class="actions">
+    <a class="button" href="/filters/new">Criar filtro</a>
+    <a class="button secondary" href="/listings/new">Cadastrar anúncio</a>
+  </div>
+</section>
+
+<section class="stats-grid">
+  <div class="card stat"><span>Total filtros</span><strong>{{ stats.total_filters }}</strong></div>
+  <div class="card stat"><span>Total anúncios</span><strong>{{ stats.total_listings }}</strong></div>
+  <div class="card stat"><span>Provável proprietário</span><strong>{{ stats.owner_likely }}</strong></div>
+  <div class="card stat"><span>Provável corretor</span><strong>{{ stats.broker_likely }}</strong></div>
+</section>
+
+<section class="grid two-col">
+  <div class="card">
+    <div class="section-head"><h2>Filtros</h2></div>
+    {% if filters %}
+      <table>
+        <thead><tr><th>Nome</th><th>Cidade</th><th>Bairros</th><th>Faixa</th></tr></thead>
+        <tbody>
+        {% for item in filters %}
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.city }}</td>
+            <td>{{ item.neighborhoods }}</td>
+            <td>{{ item.min_price or '-' }} — {{ item.max_price or '-' }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Nenhum filtro cadastrado.</p>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <div class="section-head"><h2>Anúncios recentes</h2></div>
+    {% if listings %}
+      <table>
+        <thead><tr><th>Título</th><th>Classificação</th><th>Score</th><th>Bairro</th></tr></thead>
+        <tbody>
+        {% for item in listings %}
+          <tr>
+            <td>{{ item.title }}</td>
+            <td><span class="pill {{ item.classification }}">{{ item.classification }}</span></td>
+            <td>{{ item.score }}</td>
+            <td>{{ item.neighborhood }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Nenhum anúncio recebido.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
